@@ -1,11 +1,14 @@
-define localuser::rsa_id (
+define localuser::rsa_id
+(
   $home,
   $user,
   $basename           = 'id_rsa',
   $publickey_source   = undef,
   $publickey_content  = undef,
   $privatekey_source  = undef,
-  $privatekey_content = undef,) {
+  $privatekey_content = undef,
+)
+{
   if !$publickey_source and !$publickey_content {
     fail('Either "source" or "content" must be provided for public key.')
   }
@@ -36,7 +39,7 @@ define localuser::rsa_id (
     require => [
       File[$user_ssh_confdir_path],
       User[$name],
-      ],
+    ],
   }
 
   file { "${user_ssh_confdir_path}/${basename}.pub":
@@ -49,6 +52,6 @@ define localuser::rsa_id (
     require => [
       File[$user_ssh_confdir_path],
       User[$name],
-      ],
+    ],
   }
 }

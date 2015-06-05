@@ -1,4 +1,5 @@
-define localuser::linux (
+define localuser::linux
+(
   $ensure,
   $uid,
   $gid,
@@ -11,7 +12,8 @@ define localuser::linux (
   $purge_ssh_keys,
   $ssh_authorized_keys,
   $comment,
-) {
+)
+{
   include localuser::params
 
   validate_array($ssh_authorized_keys)
@@ -34,7 +36,10 @@ define localuser::linux (
   }
 
   if $ensure == 'present' {
-    group { $name: gid => $uid, } ->
+    group { $name:
+      gid => $uid,
+    }
+    ->
     user { $name:
       uid            => $uid,
       gid            => $name,
@@ -50,7 +55,7 @@ define localuser::linux (
 
     each($ssh_authorized_keys) |$key| {
       if is_string($key) {
-        if $key =~ /^([\w-]+) (.*?) (.*)$/ {
+        if $key =~ /^([\w-]+) ([^\s]*?)( .*)?$/ {
           $key_type    = $1
           $key_key     = $2
           $key_comment = $3
@@ -75,7 +80,12 @@ define localuser::linux (
       }
     }
   } else {
-    user { $name: ensure => absent, } ->
-    group { $name: ensure => absent, }
+    user { $name:
+      ensure => absent,
+    }
+    ->
+    group { $name:
+      ensure => absent,
+    }
   }
 }

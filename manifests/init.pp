@@ -68,8 +68,10 @@ define localuser
       home               => $_home,
       user               => $name,
       basename           => $basename,
-      publickey_content  => $rsa_id['public_key'],
-      privatekey_content => $rsa_id['private_key'],
+      publickey_content  => $rsa_id['public_key_content'],
+      publickey_source   => $rsa_id['public_key_source'],
+      privatekey_content => $rsa_id['private_key_content'],
+      privatekey_source  => $rsa_id['private_key_source'],
     }
   }
 }
