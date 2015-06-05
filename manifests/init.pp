@@ -13,15 +13,11 @@ define localuser
   $purge_ssh_keys      = true,
   $ssh_authorized_keys = {},
   $comment             = "${name}@${::fqdn}",
-  $roles               = [],
 )
 {
-  validate_array($groups)
+  include ::localuser::params
   
-  $_groups = member($roles, 'admin') ? {
-    true    => concat($groups, $localuser::params::admin_group_name),
-    default => $groups,
-  }
+  validate_array($groups)
 
   $_home = $home ? {
     undef   => $name ? {

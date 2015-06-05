@@ -9,6 +9,8 @@ define localuser::rsa_id
   $privatekey_content = undef,
 )
 {
+  include ::localuser::params
+
   if !$publickey_source and !$publickey_content {
     fail('Either "source" or "content" must be provided for public key.')
   }

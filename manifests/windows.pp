@@ -1,4 +1,5 @@
-define localuser::windows (
+define localuser::windows
+(
   $ensure,
   $uid,
   $gid,
@@ -6,7 +7,11 @@ define localuser::windows (
   $groups,
   $comment,
   $home,
-  $roles,) {
+  $roles,
+)
+{
+  include ::localuser::params
+
   user { $name:
     ensure   => $ensure,
     comment  => $comment,
