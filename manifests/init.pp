@@ -60,7 +60,8 @@ define localuser
     }
   }
 
-  each($ssh_rsa_ids) |$keyname, $rsa_id| {
+  each($ssh_rsa_ids) |$rsa_id| {
+    $keyname  = $rsa_id['keyname']
     $basename = $rsa_id['basename'] ? {
       undef   => 'id_rsa',
       default => $rsa_id['basename'],]

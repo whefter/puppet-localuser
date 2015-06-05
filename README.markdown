@@ -4,8 +4,9 @@ Requires `parser=future` or Puppet 4 (untested).
 
 ## `ssh_rsa_ids` structure ##
 
-    $ssh_rsa_ids = {
-        'keyname' => {
+    $ssh_rsa_ids = [
+        {
+            keyname             => 'some_key_name', 
             # Defaults to id_rsa if unspecified
             basename            => 'id_rsa2',
             public_key_content  => 'ssh-rsa AAAAB3NzaC1y...',
@@ -13,7 +14,7 @@ Requires `parser=future` or Puppet 4 (untested).
             private_key_content => "-----BEGIN RSA PRIVATE KEY-----....",
             private_key_source  => 'puppet://...',
         }
-    }
+    ]
     
 ## `ssh_authorized_keys` structure ##
 
