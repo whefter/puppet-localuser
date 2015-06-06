@@ -11,7 +11,7 @@ define localuser
   $system              = false,
   $ssh_rsa_ids         = {},
   $purge_ssh_keys      = true,
-  $ssh_authorized_keys = {},
+  $ssh_authorized_keys = [],
   $comment             = "${name}@${::fqdn}",
   $admin               = false,
 )
