@@ -17,7 +17,7 @@ define localuser
 )
 {
   include ::localuser::params
-  
+
   validate_array($groups)
 
   $_groups = $admin ? {
@@ -32,7 +32,7 @@ define localuser
     },
     default => $home,
   }
-  
+
   if $::kernel =~ /^(L|l)inux$/ {
     ::localuser::linux { $name:
       ensure              => $ensure,
@@ -64,7 +64,7 @@ define localuser
     $keyname  = $rsa_id['keyname']
     $basename = $rsa_id['basename'] ? {
       undef   => 'id_rsa',
-      default => $rsa_id['basename'],]
+      default => $rsa_id['basename'],
     }
 
     ::localuser::rsa_id { "${name}_${basename}":
