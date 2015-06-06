@@ -68,13 +68,13 @@ define localuser
     }
 
     ::localuser::rsa_id { "${name}_${basename}":
-      home               => $_home,
-      user               => $name,
-      basename           => $basename,
-      publickey_content  => $rsa_id['public_key_content'],
-      publickey_source   => $rsa_id['public_key_source'],
-      privatekey_content => $rsa_id['private_key_content'],
-      privatekey_source  => $rsa_id['private_key_source'],
+      home                => $_home,
+      user                => $name,
+      basename            => $basename,
+      public_key_content  => $rsa_id['public_key_content'],
+      public_key_source   => $rsa_id['public_key_source'],
+      private_key_content => $rsa_id['private_key_content'],
+      private_key_source  => $rsa_id['private_key_source'],
     }
   }
 }

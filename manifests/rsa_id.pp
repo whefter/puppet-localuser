@@ -2,20 +2,20 @@ define localuser::rsa_id
 (
   $home,
   $user,
-  $basename           = 'id_rsa',
-  $publickey_source   = undef,
-  $publickey_content  = undef,
-  $privatekey_source  = undef,
-  $privatekey_content = undef,
+  $basename            = 'id_rsa',
+  $public_key_source   = undef,
+  $public_key_content  = undef,
+  $private_key_source  = undef,
+  $private_key_content = undef,
 )
 {
   include ::localuser::params
 
-  if !$publickey_source and !$publickey_content {
+  if !$public_key_source and !$public_key_content {
     fail('Either "source" or "content" must be provided for public key.')
   }
 
-  if !$privatekey_source and !$privatekey_content {
+  if !$private_key_source and !$private_key_content {
     fail('Either "source" or "content" must be provided for private key.')
   }
 
@@ -36,8 +36,8 @@ define localuser::rsa_id
     owner   => $user,
     group   => $user,
     mode    => '0600',
-    content => $privatekey_content,
-    source  => $privatekey_source,
+    content => $private_key_content,
+    source  => $private_key_source,
     require => [
       File[$user_ssh_confdir_path],
       User[$name],
@@ -49,8 +49,8 @@ define localuser::rsa_id
     owner   => $user,
     group   => $user,
     mode    => '0644',
-    content => $publickey_content,
-    source  => $publickey_source,
+    content => $public_key_content,
+    source  => $public_key_source,
     require => [
       File[$user_ssh_confdir_path],
       User[$name],
