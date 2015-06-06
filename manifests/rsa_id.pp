@@ -27,7 +27,9 @@ define localuser::rsa_id
       owner   => $user,
       group   => $user,
       mode    => '0700',
-      require => [User[$user],]
+      require => [
+        User[$user],
+      ]
     }
   }
 
@@ -40,7 +42,7 @@ define localuser::rsa_id
     source  => $private_key_source,
     require => [
       File[$user_ssh_confdir_path],
-      User[$name],
+      User[$user],
     ],
   }
 
@@ -53,7 +55,7 @@ define localuser::rsa_id
     source  => $public_key_source,
     require => [
       File[$user_ssh_confdir_path],
-      User[$name],
+      User[$user],
     ],
   }
 }
