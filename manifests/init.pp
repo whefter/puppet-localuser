@@ -41,7 +41,7 @@ define localuser
       password            => $password,
       password_crypt      => $password_crypt,
       shell               => $shell,
-      groups              => $groups,
+      groups              => $_groups,
       home                => $_home,
       system              => $system,
       purge_ssh_keys      => $purge_ssh_keys,
@@ -54,7 +54,7 @@ define localuser
       uid      => $uid,
       gid      => $gid,
       password => $password,
-      groups   => $groups,
+      groups   => $_groups,
       home     => $_home,
       comment  => $comment,
     }
