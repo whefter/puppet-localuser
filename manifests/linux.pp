@@ -46,7 +46,7 @@ define localuser::linux
       home           => $home,
       managehome     => true,
       comment        => $comment,
-      shell          => $shell,
+      shell          => $_shell,
       purge_ssh_keys => $purge_ssh_keys,
       groups         => $groups,
       system         => $system,
