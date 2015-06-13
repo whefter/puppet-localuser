@@ -55,10 +55,10 @@ define localuser::linux
 
     each($ssh_authorized_keys) |$key| {
       if is_string($key) {
-        if $key =~ /^([\w-]+) ([^\s]*?)( .*)?$/ {
+        if $key =~ /^([\w-]+) ([^\s]*?)( (.*))?$/ {
           $key_type    = $1
           $key_key     = $2
-          $key_comment = $3
+          $key_comment = $4
         } else {
           fail('Malformed SSH public key')
         }
