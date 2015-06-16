@@ -10,7 +10,7 @@ define localuser
   $home                = undef,
   $system              = false,
   $ssh_rsa_ids         = {},
-  $purge_ssh_keys      = true,
+  $purge_ssh_keys      = false,
   $ssh_authorized_keys = [],
   $comment             = "${name}@${::fqdn}",
   $admin               = false,
