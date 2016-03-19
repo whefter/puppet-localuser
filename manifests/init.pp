@@ -8,6 +8,7 @@ define localuser
   $shell               = undef,
   $groups              = [],
   $home                = undef,
+  $managehome          = true,
   $system              = false,
   $ssh_rsa_ids         = {},
   $purge_ssh_keys      = false,
@@ -26,11 +27,13 @@ define localuser
   }
 
   $_home = $home ? {
-    undef   => $name ? {
-      'root'  => '/root',
-      default => "${localuser::params::home_base_path}/${name}",
-    },
     default => $home,
+  }
+
+  if $_home == undef {
+    $_managehome = false
+  } else {
+    $_managehome = $managehome
   }
 
   if $::kernel =~ /^(L|l)inux$/ {
@@ -43,6 +46,7 @@ define localuser
       shell               => $shell,
       groups              => $_groups,
       home                => $_home,
+      managehome          => $_managehome,
       system              => $system,
       purge_ssh_keys      => $purge_ssh_keys,
       ssh_authorized_keys => $ssh_authorized_keys,
