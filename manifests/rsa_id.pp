@@ -12,7 +12,7 @@ define localuser::rsa_id
   include ::localuser::params
 
   if !$home {
-    fail('A home directory must be provided to deploy RSA IDs.')
+    fail("A home directory must be provided to deploy RSA ID ${name} for user ${user}.")
   }
 
   if !$public_key_source and !$public_key_content {
