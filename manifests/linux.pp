@@ -74,7 +74,7 @@ define localuser::linux
         fail('Malformed authorized key entry')
       }
 
-      ssh_authorized_key { "${name}_ssh_${key_type}_${key_comment}":
+      ssh_authorized_key { "${name}_ssh_${key_type}":
         user => $name,
         type => $key_type,
         key  => $key_key,
