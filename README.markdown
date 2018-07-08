@@ -1,3 +1,5 @@
+**This module is not maintained anymore since I've found Ansible to be much, much easier to use than Puppet.**
+
 # localuser #
 
 Requires `parser=future` or Puppet 4 (untested).
